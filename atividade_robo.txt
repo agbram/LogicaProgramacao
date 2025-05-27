@@ -6,13 +6,15 @@ ATIVIDADE ROBO
 -gire 180° horario
 -mover garra para mesa
 -abrir garra
--mover garra para lampada nova
+-mover 
 -fechar garra 
 -mover garra para espaço vazio da lampada velha
 -gire 180° anti horario
 -gire 180° anti horario
 -abra a garra
 -mover garra para centro
+
+atividade finalizada.
 
 -------------------------------------------
 

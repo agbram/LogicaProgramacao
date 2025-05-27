@@ -1,0 +1,19 @@
+
+ATIVIDADE PEDESTRE
+
+-olhar o sinal
+
+	se sinal estiver vermelho ou amarelo
+		espere
+	se nao
+		 atravesse a faixa
+
+-olhar para a rua que vem veículos
+	se estiver passando veículos
+		espere
+	se nao
+		atravesse a faixa
+
+-olhar o sinal
+-atravessar a faixa
+- voce chegou ao destino.
