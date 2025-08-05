@@ -4,6 +4,7 @@ let ids = [];
 let nomesCompletos = [];
 let idades = [];
 let favoritos = [];
+let ativo = false;
 
 let proximoId = 1;
 
@@ -19,7 +20,7 @@ function cadastro() {
     let idade = parseInt(prompt("Insira a idade: "));
     let favorito = prompt("Insira seu animal favorito: ");
     let nomeCompleto = nomeN + " " + nomeS;
-
+    ativo = true;
     ids.push(proximoId);
     nomesCompletos.push(nomeCompleto);
     idades.push(idade);
@@ -32,6 +33,13 @@ function cadastro() {
 
 function listaCadastro() {
     limpaTela();
+
+    if(ativo = true){
+        ativo = "ATIVADO"
+    }else{
+        ativo = "DESATIVADO"
+    }
+
     console.log("== LISTAGEM DE USUÁRIOS ==");
     if (ids.length === 0) {
         console.log("Nenhum usuário cadastrado.");
@@ -41,6 +49,7 @@ function listaCadastro() {
             console.log("Nome: " + nomesCompletos[i]);
             console.log("Idade: " + idades[i]);
             console.log("Animal favorito: " + favoritos[i]);
+            console.log(`Status: ${ativo}`);
             console.log("------------------------");
         }
     }
@@ -74,5 +83,7 @@ function menu() {
         }
     } while (opcao !== 0);
 }
+
+
 
 menu();
