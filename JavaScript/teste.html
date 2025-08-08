@@ -1,71 +1,80 @@
 <script>
-
 let posicao = 0;
+let andar = 0;
 
 let posicaoMoeda = 6;
-
-let chao = "_"
+let andarMoeda = 1; 
 
 let personagem = "x";
+let moeda = "@";
+let vazio = " ";
+let chao = "_";
 
-let tamanhoMundo = 10
+let tamanhoMundo = 10;
 
-let limiteMapa = 0;
-
-document.addEventListener("keyup", (e)=>{
-    
-    if(e.key == "ArrowRight"){
-        posicao++
-    } else if(e.key == "ArrowLeft"){
-        posicao--
-    } else if(e.key == "f"){
+document.addEventListener("keyup", (e) => {
+    if (e.key === "ArrowRight") {
+        posicao++;
+    } else if (e.key === "ArrowLeft") {
+        posicao--;
+    } else if (e.key === "d") {
         posicao += 3;
+    } else if (e.key === "a") {
+        posicao -= 3;
+    } else if (e.key === "ArrowUp") {
+        andar = 1;
+    } else if (e.key === "ArrowDown") {
+        andar = 0;
     }
 
     console.clear();
-    limite();
+    limitar();
     desenhar();
-})
-function limite(){
-    if(posicao >= tamanhoMundo){
-        posicao = 10;
-        console.log("Aqui é o fim do mapa!")
-    } else if( posicao <= 0){
+});
+
+function limitar() {
+    if (posicao >= tamanhoMundo) {
+        posicao = tamanhoMundo - 1;
+        console.log("Aqui é o fim do mapa!");
+    } else if (posicao < 0) {
         posicao = 0;
-        console.log("Aqui é o fim do mapa!")
-        
-    }
-}
-
-
-function desenhar(){
-let mapa = "";
-let moeda = "@";
-
-let superPasso = 3;
-
-for(let i = 0; i <= tamanhoMundo; i++){
-    
-    if(i == posicao){
-
-        mapa += personagem
-
-    } else if(i == posicaoMoeda){
-       
-        mapa += moeda
-
-    } else{
-
-    mapa += chao
-
+        console.log("Aqui é o fim do mapa!");
     }
 
-    if(posicao == posicaoMoeda){
-        console.log("Você coletou uma moeda!")
-        posicaoMoeda = "_"
-    }
-}
-console.log(mapa)
+    if (andar > 1) andar = 1;
+    if (andar < 0) andar = 0;
 }
 
+function desenhar() {
+    let linhaCima = "";
+    let linhaBaixo = "";
+
+    for (let i = 0; i < tamanhoMundo; i++) {
+        if (andar === 1 && posicao === i) {
+            linhaCima += personagem;
+        } else if (andarMoeda === 1 && posicaoMoeda === i) {
+            linhaCima += moeda;
+        } else {
+            linhaCima += vazio;
+        }
+
+        if (andar === 0 && posicao === i) {
+            linhaBaixo += personagem;
+        } else if (andarMoeda === 0 && posicaoMoeda === i) {
+            linhaBaixo += moeda;
+        } else {
+            linhaBaixo += chao;
+        }
+    }
+
+    console.log(linhaCima);
+    console.log(linhaBaixo);
+
+    // Coletar moeda
+    if (posicao === posicaoMoeda && andar === andarMoeda) {
+        console.log("Você coletou a moeda!");
+        posicaoMoeda = -1;
+        andarMoeda = -1;
+    }
+}
 </script>
